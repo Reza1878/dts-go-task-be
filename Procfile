@@ -1,1 +1,1 @@
-web: bin/go-dts-task
+web: bin/dts-task
