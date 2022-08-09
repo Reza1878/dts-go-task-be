@@ -1,9 +1,12 @@
 package helper
 
 import (
+	"log"
+	"os"
 	"time"
 
 	"github.com/go-playground/validator/v10"
+	"github.com/joho/godotenv"
 )
 
 func ParseDate(dateString string) (time.Time, error) {
@@ -42,4 +45,14 @@ func FormatValidationError(err error) []string {
 		errors = append(errors, e.Error())
 	}
 	return errors
+}
+
+func GetDotEnvVariable(key string) string {
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	return os.Getenv(key)
 }

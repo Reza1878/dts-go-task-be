@@ -35,7 +35,7 @@ func (r *repositoryImpl) Save(task Task) (Task, error) {
 
 func (r *repositoryImpl) FindAll() ([]Task, error) {
 
-	var tasks []Task
+	tasks := []Task{}
 	rows, err := r.db.Query("SELECT id, task, assignee, due_date from tasks")
 	if err != nil {
 		return tasks, err
