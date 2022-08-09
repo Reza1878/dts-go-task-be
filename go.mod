@@ -1,3 +1,5 @@
+// +heroku goVersion go1.19
+
 module dts-task
 
 go 1.19
