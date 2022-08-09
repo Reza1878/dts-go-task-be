@@ -1,7 +1,7 @@
 package helper
 
 import (
-	"log"
+	"fmt"
 	"os"
 	"time"
 
@@ -51,7 +51,7 @@ func GetDotEnvVariable(key string) string {
 	err := godotenv.Load(".env")
 
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		fmt.Println("Error loading .env file")
 	}
 
 	return os.Getenv(key)
