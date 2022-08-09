@@ -98,7 +98,7 @@ func (h *TaskHandler) UpdateTask(c *gin.Context) {
 	err = c.ShouldBindJSON(&requestData)
 	if err != nil {
 		errors := helper.FormatValidationError(err)
-		response := helper.APIResponse("Failed to update task", http.StatusUnprocessableEntity, "error", map[string]any{
+		response := helper.APIResponse("Failed to update task", http.StatusUnprocessableEntity, "error", map[string]interface{}{
 			"errors": errors,
 		})
 		c.JSON(http.StatusUnprocessableEntity, response)
@@ -109,12 +109,12 @@ func (h *TaskHandler) UpdateTask(c *gin.Context) {
 
 	if err != nil {
 		if err == sql.ErrNoRows {
-			response := helper.APIResponse("Failed to update task", http.StatusNotFound, "error", map[string]any{
+			response := helper.APIResponse("Failed to update task", http.StatusNotFound, "error", map[string]interface{}{
 				"errors": "Data not found",
 			})
 			c.JSON(http.StatusNotFound, response)
 		} else {
-			response := helper.APIResponse("Failed to update campaign", http.StatusUnprocessableEntity, "error", map[string]any{
+			response := helper.APIResponse("Failed to update campaign", http.StatusUnprocessableEntity, "error", map[string]interface{}{
 				"errors": err.Error(),
 			})
 			c.JSON(http.StatusUnprocessableEntity, response)
@@ -140,12 +140,12 @@ func (h *TaskHandler) DeleteTask(c *gin.Context) {
 
 	if err != nil {
 		if err == sql.ErrNoRows {
-			response := helper.APIResponse("Failed to update task", http.StatusNotFound, "error", map[string]any{
+			response := helper.APIResponse("Failed to update task", http.StatusNotFound, "error", map[string]interface{}{
 				"errors": "Data not found",
 			})
 			c.JSON(http.StatusNotFound, response)
 		} else {
-			response := helper.APIResponse("Failed to update task", http.StatusUnprocessableEntity, "error", map[string]any{
+			response := helper.APIResponse("Failed to update task", http.StatusUnprocessableEntity, "error", map[string]interface{}{
 				"errors": err.Error(),
 			})
 			c.JSON(http.StatusUnprocessableEntity, response)
